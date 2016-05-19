@@ -47,13 +47,14 @@ module.exports = function(sequelize, DataTypes) {
 					if (typeof body.email !== 'string' || typeof body.password !== 'string') {
 						return reject();
 					}
-
-					user.findAll({
+					
+					user.findOne({
 						where: {
-							email: body.email
+							email: body.email.toLowerCase()
 						}
 					}).then(function(user) {
-						
+						console.log(body);
+						console.log(user);
 						if (!user || !bcrypt.compareSync(body.password, user.get('password_hash'))) {
 							return reject();
 						}
