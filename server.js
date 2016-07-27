@@ -72,7 +72,7 @@ app.post('/todos',  middleware.requireAuthentication, function(req, res) {
 		res.status(400).json(e);
 	});
 });
-/*
+
 app.post('/token', function (req, res) {
 	var body = _.pick(req.body, 'tokenId', 'message');
 
@@ -82,7 +82,7 @@ app.post('/token', function (req, res) {
 		res.status(400).json(e);
 	});
 });
-*/
+
 
 
 
