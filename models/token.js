@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
 				len: [1, 250]
 			}
 		},
-		users: {
+		message: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			defaultValue: false
