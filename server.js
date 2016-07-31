@@ -78,7 +78,7 @@ app.post('/todos',  middleware.requireAuthentication, function(req, res) {
 	});
 });
 
-/*app.post('/token', function (req, res) {
+app.post('/token', function (req, res) {
 	var body = _.pick(req.body, 'tokenId', 'message');
 
 	db.token.create(body).then(function () {
@@ -88,7 +88,7 @@ app.post('/todos',  middleware.requireAuthentication, function(req, res) {
 	});
 });
 
-*/
+
 
 
 // DELETE /todos/:id
