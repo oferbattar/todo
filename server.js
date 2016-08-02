@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var _ = require('underscore');
 var db = require('./db.js');
 var bcrypt = require('bcryptjs');
+var request = require('request');
 var middleware = require('./middleware.js')(db);
 
 var app = express();
@@ -80,28 +81,27 @@ app.post('/todos',  middleware.requireAuthentication, function(req, res) {
 
 app.post('/token', function (req, res) {
 	 
-	var body = _.pick(req.body, 'tokenId', 'message');
-	var post_options = {
-      host: 'https://fcm.googleapis.com/fcm/send',
-      port: '80',
-      path: '/compile',
-      method: 'POST',
-      body: JSON.stringify(body)
-      headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Key=AIzaSyCErHw5cMvev5PUU9LNOpDM8MQqrfVi3eo'
-      }
-  };
-
+	var body = _.pick(req.body, 'to', 'notification');
 	
-
 	db.token.create(body).then(function () {
 		res.json(req.body);
 	}, function (e) {
 		res.status(400).json(e);
 	});
-		request(post_ptions);
+		
+	request({
+   	 	url:'https://fcm.googleapis.com/fcm/send',
+    	method: "POST",
+    	json: true,   // <--Very important!!!
+   		body: req.body,
+    	headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Key=AIzaSyCErHw5cMvev5PUU9LNOpDM8MQqrfVi3eo'
+     		 }
 
+		}, function (error, response, body){
+    		console.log(response);
+			});
 
 });
 

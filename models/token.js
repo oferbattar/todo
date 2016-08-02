@@ -1,16 +1,19 @@
 module.exports = function(sequelize, DataTypes) {
 	return sequelize.define('token', {
-		tokenId: {
+		to: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				len: [1, 250]
+				len: [1, 500]
 			}
 		},
-		message: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			defaultValue: false
-		}
+		notification: {
+			
+				type: DataTypes.VIRTUAL,
+				allowNull: false,
+				defaultValue: false
+			
+			}
+		
 	});
 };
