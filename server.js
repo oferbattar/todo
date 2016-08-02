@@ -79,13 +79,30 @@ app.post('/todos',  middleware.requireAuthentication, function(req, res) {
 });
 
 app.post('/token', function (req, res) {
+	 
 	var body = _.pick(req.body, 'tokenId', 'message');
+	var post_options = {
+      host: 'https://fcm.googleapis.com/fcm/send',
+      port: '80',
+      path: '/compile',
+      method: 'POST',
+      body: JSON.stringify(body)
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Key=AIzaSyCErHw5cMvev5PUU9LNOpDM8MQqrfVi3eo'
+      }
+  };
+
+	
 
 	db.token.create(body).then(function () {
 		res.json(req.body);
 	}, function (e) {
 		res.status(400).json(e);
 	});
+		request(post_ptions);
+
+
 });
 
 
