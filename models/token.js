@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 	return sequelize.define('token', {
-		to: {
+		registration_ids: {
 			type: DataTypes.ARRAY(DataTypes.STRING),
 			allowNull: false,
 			validate: {
