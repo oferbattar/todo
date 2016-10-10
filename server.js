@@ -96,7 +96,7 @@ app.post('/token', function (req, res) {
    		body: req.body,
     	headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Key=AIzaSyCErHw5cMvev5PUU9LNOpDM8MQqrfVi3eo'
+          'Authorization': 'Key=AIzaSyAckPI6RT62F36oYrWQnHp8TABr2XooPDE'
      		 }
 
 		}, function (error, response, body){
