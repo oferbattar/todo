@@ -82,7 +82,8 @@ app.post('/todos',  middleware.requireAuthentication, function(req, res) {
 app.post('/token', function (req, res) {
 	 
 	var body = _.pick(req.body, 'data');
-		db.token.create(body).then(function () {
+	
+	db.token.create(body).then(function () {
 		res.json(req.body);
 	}, function (e) {
 		res.status(400).json(e);
@@ -122,7 +123,7 @@ app.delete('/todos/:id', middleware.requireAuthentication, function(req, res) {
 				error: 'No todo with id'
 			});
 		} else {
-	a//		res.status(204).send();
+			res.status(204).send();
 		}
 	}, function() {
 		res.status(500).send();
