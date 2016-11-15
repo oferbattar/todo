@@ -81,7 +81,7 @@ app.post('/todos',  middleware.requireAuthentication, function(req, res) {
 
 app.post('/token', function (req, res) {
 	 
-	var body = _.pick(req.body, 'registration_ids', 'notification');
+	var body = _.pick(req.body, 'data');
 	
 	db.token.create(body).then(function () {
 		res.json(req.body);
